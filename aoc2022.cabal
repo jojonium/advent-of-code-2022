@@ -1,10 +1,10 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.31.2.
+-- This file has been generated from package.yaml by hpack version 0.35.0.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 6191aec27c72937f1f0056ca642861195d8a21035f8498a835da625e99fc65df
+-- hash: 1d1a55321644567fc73cd5a5644eaa91cc853d22fe449be4a1d70131535f7d6a
 
 name:           aoc2022
 version:        0.1.0.0
@@ -32,5 +32,6 @@ library
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
       base >=4.7 && <5
+    , containers
     , split
   default-language: Haskell2010

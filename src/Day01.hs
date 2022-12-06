@@ -1,3 +1,5 @@
+module Day01 (main) where
+
 import System.Environment (getArgs)
 import Data.List (sortBy)
 import Data.List.Split (splitOn)

@@ -1,3 +1,5 @@
+module Day03 (main) where
+
 import System.Environment (getArgs)
 import Data.List (intersect)
 import Data.Char (isUpper, ord)

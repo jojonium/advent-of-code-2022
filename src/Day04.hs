@@ -1,3 +1,5 @@
+module Day04 (main) where
+
 import System.Environment (getArgs)
 import Data.List.Split (splitOn)
 import Data.List (intersect)

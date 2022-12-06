@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 1d1a55321644567fc73cd5a5644eaa91cc853d22fe449be4a1d70131535f7d6a
+-- hash: 8f5f7cc7d15777a2834d847fd14a63d6c552c4cad9c5b2f1fe7a6546dd4869af
 
 name:           aoc2022
 version:        0.1.0.0
@@ -25,6 +25,13 @@ source-repository head
   location: https://github.com/jojonium/advent-of-code-2022
 
 library
+  exposed-modules:
+      Day01
+      Day02
+      Day03
+      Day04
+      Day05
+      Day06
   other-modules:
       Paths_aoc2022
   hs-source-dirs:

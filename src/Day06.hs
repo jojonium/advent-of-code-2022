@@ -1,3 +1,5 @@
+module Day06 (main) where
+
 import System.Environment (getArgs)
 import qualified Data.Set as Set
 

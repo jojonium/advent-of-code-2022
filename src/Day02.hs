@@ -1,3 +1,5 @@
+module Day02 (main) where
+
 import System.Environment (getArgs)
 
 getInput :: String -> IO [String]

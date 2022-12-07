@@ -54,20 +54,20 @@ parse (s:ss) pwd tree = case words s of
                  in parse rest pwd tree'
   _ -> parse ss pwd tree
 
-updateDir :: Dir -> [String] -> Dir -> Dir
-updateDir dir ["/"] _ = dir
-updateDir dir ("/":xs) root = updateDir dir xs root
-updateDir _ [] _ = error "Shouldn't have gotten here"
-updateDir dir [_] root = let newFolders = Map.insert (dName dir) dir (dFolders root)
-                         in root { dFolders = newFolders }
-updateDir dir (x:xs) root = let newFolders = Map.adjust (updateDir dir xs) x (dFolders root)
-                            in root { dFolders = newFolders }
+insDir :: Dir -> [String] -> Dir -> Dir
+insDir dir ["/"] _ = dir
+insDir dir ("/":xs) root = insDir dir xs root
+insDir dir [_]      root = let f = Map.insert (dName dir) dir (dFolders root)
+                           in root { dFolders = f }
+insDir dir (x:xs)   root = let f = Map.adjust (insDir dir xs) x (dFolders root)
+                           in root { dFolders = f }
+insDir _   []       _    = error "Shouldn't have gotten here"
 
 parseListing :: [String] -> [String] -> Dir -> Dir
 parseListing [] _   tree = tree
-parseListing ls pwd tree = let current' = foldr addLs currentF ls
-                           in updateDir current' pwd tree
+parseListing ls pwd tree = insDir currentF' pwd tree
   where currentF  = foldl (\t d -> dFolders t Map.! d) tree (tail pwd)
+        currentF' = foldr addLs currentF ls
         addLs l d = case words l of
           ["dir", dirName] -> let new = Dir dirName Map.empty Map.empty
                                   old = dFolders d

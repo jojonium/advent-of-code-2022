@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 169c0cbdd6480b949740b5732384ccb594a96177908814567d7c033bcc3301c2
+-- hash: e7dd728746248ae668abd298c5c5aad49163b2ddbc61e5877d9eb3f75e25ba72
 
 name:           aoc2022
 version:        0.1.0.0
@@ -36,6 +36,7 @@ library
       Day08
       Day09
       Day10
+      Day11
   other-modules:
       Paths_aoc2022
   hs-source-dirs:
@@ -44,5 +45,6 @@ library
   build-depends:
       base >=4.7 && <5
     , containers
+    , regex-tdfa
     , split
   default-language: Haskell2010

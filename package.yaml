@@ -23,6 +23,7 @@ dependencies:
 - split
 - containers
 - regex-tdfa
+- search-algorithms
 
 ghc-options:
 - -Wall

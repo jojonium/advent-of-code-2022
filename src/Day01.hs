@@ -13,7 +13,7 @@ main :: IO ()
 main = do
   input <- getInput "inputs/day01.txt"
   let paras = splitOn "\n\n" input
-      elves = (sortBy (flip compare) . map (sum . map read . lines)) paras
+      elves = (sortBy (flip compare) . map (sum . map read . lines)) paras :: [Integer]
   putStrLn $ "Part 1: " ++ show (head elves)
   putStrLn $ "Part 2: " ++ show (sum (take 3 elves))
 

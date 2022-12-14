@@ -7,14 +7,10 @@ import Data.Maybe (fromJust)
 
 data PD = Leaf Int | Node [PD] deriving (Eq, Show)
 
-getInput :: String -> IO String
-getInput defFile = do
-  args <- getArgs
-  readFile (case args of [] -> defFile; x:_ -> x)
-
 main :: IO ()
 main = do
-  input <- getInput "inputs/day13.txt"
+  let withDefault a = case a of [] -> "inputs/day13.txt"; x:_ -> x
+  input <- readFile . withDefault =<< getArgs
   putStrLn $ "Part 1: " ++ show (part1 input)
   putStrLn $ "Part 2: " ++ show (part2 input)
 
@@ -44,13 +40,7 @@ toPair :: String -> (PD, PD)
 toPair s = let ls = lines s in (parse (head ls), parse (ls !! 1))
 
 instance Ord PD where
-  compare (Leaf i) (Leaf j) = compare i j
-  compare (Node (i:is)) (Node (j:js)) = case compare i j of
-    LT -> LT
-    GT -> GT
-    EQ -> compare (Node is) (Node js)
-  compare (Node [])    (Node (_:_)) = LT
-  compare (Node (_:_)) (Node [])    = GT
-  compare (Node [])    (Node [])    = EQ
-  compare (Leaf i)     (Node js)    = compare (Node [Leaf i]) (Node js)
-  compare (Node is)    (Leaf j)     = compare (Node is) (Node [Leaf j])
+  compare (Leaf i)  (Leaf j)  = compare i j
+  compare (Node is) (Node js) = compare is js
+  compare (Leaf i)  (Node js) = compare (Node [Leaf i]) (Node js)
+  compare (Node is) (Leaf j)  = compare (Node is) (Node [Leaf j])

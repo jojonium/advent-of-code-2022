@@ -24,6 +24,7 @@ dependencies:
 - containers
 - regex-tdfa
 - search-algorithms
+- range
 
 ghc-options:
 - -Wall
